@@ -62,16 +62,16 @@ const messageslide = keyframes`
 	11% { width: 100%; }
 	22% { width: 100%; }
 	32% { top: 0; width: 0; }
-	33% { top: -4.5rem; }
+	33% { top: 0; }
 	34% { width: 0; }
 	44% { width: 100%; }
 	55% { width: 100%; }
-	65% { top: -4.5rem; width: 0; }
-	66% { top: -9rem; }
+	65% { top: 0; width: 0; }
+	66% { top: 0; }
 	67% { width: 0; }
 	77% { width: 100%; }
 	89% { width: 100%; }
-	99% { top: -9rem; width: 0; }
+	99% { top: 0; width: 0; }
 	100% { top: 0; width: 0; }
 `;
 
@@ -81,16 +81,16 @@ const messageslideMo = keyframes`
 	11% { width: 100%; }
 	22% { width: 100%; }
 	32% { top: 0; width: 0; }
-	33% { top: -3.5rem; }
+	33% { top: 0; }
 	34% { width: 0; }
 	44% { width: 100%; }
 	55% { width: 100%; }
-	65% { top: -3.5rem; width: 0; }
-	66% { top: -7rem; }
+	65% { top: 0; width: 0; }
+	66% { top: 0; }
 	67% { width: 0; }
 	77% { width: 100%; }
 	89% { width: 100%; }
-	99% { top: -7rem; width: 0; }
+	99% { top: 0; width: 0; }
 	100% { top: 0; width: 0; }
 `;
 
@@ -169,7 +169,8 @@ const StyledHome = styled.main`
 				white-space: nowrap;
 				overflow: hidden;
 				position: relative;
-				
+				line-height: 1; /* 줄 간격을 조정하여 텍스트 위치를 맞춤 */
+
 				.message {
 					display: block;
 					overflow: hidden;

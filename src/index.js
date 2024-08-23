@@ -5,7 +5,7 @@ import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import config from "./assets/config";
 import { ThemeProvider } from "styled-components";
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

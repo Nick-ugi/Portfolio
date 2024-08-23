@@ -33,14 +33,15 @@ function Header(props) {
 					</Link>
 				</li>
 				<li className={props.page === "blog" ? "active" : ""}>
-					<Link to="/blog">
+					{/* eslint-disable-next-line react/jsx-no-target-blank */}
+					<a href="https://www.notion.so/9f5fe7c8d4d14e0585aa10185543efbd" target="_blank">
 						<span>Blog</span>
 						<i className="fas fa-book"></i>
-					</Link>
+					</a>
 				</li>
 				<li>
 					{/* eslint-disable-next-line react/jsx-no-target-blank */}
-					<a href="https://github.com/hjban-dev" target="_blank">
+					<a href="https://github.com/Nick-ugi" target="_blank">
 						<span>Github</span>
 						<i className="fab fa-github"></i>
 					</a>
@@ -116,6 +117,7 @@ const StyledHeader = styled.header`
 					font-size: 20px;
 					text-align: center;
 					line-height: 25px;
+					color: #fff; /* 아이콘의 기본 색상을 흰색으로 설정 */
 				}
 			}
 		}

@@ -6,7 +6,7 @@ import ExperienceWrap from "../organisms/ExperienceWrap";
 import SkillsWrap from "../organisms/SkillsWrap";
 import PageWrap from "../templates/PageWrap";
 
-export class aboutPage extends Component {
+export class AboutPage extends Component {
 	render() {
 		return (
 			<PageWrap page="about">
@@ -31,16 +31,14 @@ export class aboutPage extends Component {
 }
 
 const StyledSkills = styled.main`
-	background-color: #000; /* 배경을 검정색으로 설정 */
-	color: #fff; /* 텍스트 색상을 흰색으로 설정 */
+	background-color: #333;
+	color: #fff;
 
 	section {
 		max-width: 1140px;
 		margin: auto;
 		padding-bottom: 80px;
-		position: relative; /* 섹션을 상대 위치로 설정 */
-		
-		/* 중앙 정렬을 위한 margin 및 flexbox 설정 */
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -49,11 +47,11 @@ const StyledSkills = styled.main`
 			content: "";
 			position: absolute;
 			bottom: 0;
-			left: 50%; /* 가상 요소를 중앙에 배치 */
-			transform: translateX(-50%); /* 가상 요소를 정확히 중앙에 위치시키기 위한 변환 */
+			left: 50%;
+			transform: translateX(-50%);
 			width: 500px;
 			height: 1px;
-			background-color: #252525; /* 구분선 색상 */
+			background-color: #252525;
 		}
 
 		> h2 {
@@ -61,7 +59,7 @@ const StyledSkills = styled.main`
 			font-size: 26px;
 			font-weight: 600;
 			text-align: center;
-			color: #fff; /* 제목 색상 흰색으로 설정 */
+			color: #fff;
 		}
 	}
 
@@ -76,4 +74,4 @@ const StyledSkills = styled.main`
 	}
 `;
 
-export default aboutPage;
+export default AboutPage;
