@@ -54,60 +54,22 @@ function AboutTxtWrap() {
 		</StyledHome>
 	);
 }
-
-// Keyframes
 const messageslide = keyframes`
-	0% { top: 0; width: 0; }
-	1% { width: 0; }
-	11% { width: 100%; }
-	22% { width: 100%; }
-	32% { top: 0; width: 0; }
-	33% { top: 0; }
-	34% { width: 0; }
-	44% { width: 100%; }
-	55% { width: 100%; }
-	65% { top: 0; width: 0; }
-	66% { top: 0; }
-	67% { width: 0; }
-	77% { width: 100%; }
-	89% { width: 100%; }
-	99% { top: 0; width: 0; }
-	100% { top: 0; width: 0; }
-`;
 
+`;
 const messageslideMo = keyframes`
-	0% { top: 0; width: 0; }
-	1% { width: 0; }
-	11% { width: 100%; }
-	22% { width: 100%; }
-	32% { top: 0; width: 0; }
-	33% { top: 0; }
-	34% { width: 0; }
-	44% { width: 100%; }
-	55% { width: 100%; }
-	65% { top: 0; width: 0; }
-	66% { top: 0; }
-	67% { width: 0; }
-	77% { width: 100%; }
-	89% { width: 100%; }
-	99% { top: 0; width: 0; }
-	100% { top: 0; width: 0; }
+	
 `;
-
-// Styled Component
 const StyledHome = styled.main`
 	display: flex;
 	height: 100vh;
 	max-width: 1600px;
 	margin: auto;
-	background-color: #000; /* 배경을 검정색으로 설정 */
-
 	.left {
 		flex: 0 0 35%;
 		position: relative;
 		max-width: 600px;
 		background-color: #111;
-		
 		&::after {
 			content: "";
 			display: inline-block;
@@ -120,7 +82,6 @@ const StyledHome = styled.main`
 			height: 100%;
 			background-color: ${(props) => props.theme.mainColor};
 		}
-		
 		.color-block {
 			position: absolute;
 			top: -60%;
@@ -131,13 +92,11 @@ const StyledHome = styled.main`
 			transform: rotate(-12deg);
 			background-color: ${(props) => props.theme.mainColor};
 		}
-		
 		.img-box {
-			width: 49vh;
-			height: 65vh;
+			height: 90vh;
 			margin: 5vh 0 0 30px;
 			background-image: url(${(props) => props.theme.mainSrc});
-			background-size: contain;
+			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: top;
 			border-radius: 15px;
@@ -146,22 +105,17 @@ const StyledHome = styled.main`
 			z-index: 1;
 		}
 	}
-	
 	.right {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: flex-start;
 		padding: 0 10% 0 7%;
-		color: #fff; /* 글씨 색상을 흰색으로 설정 */
-		
 		.tit-wrap {
 			margin-bottom: 60px;
-			
 			h2 {
 				font-size: 22px;
 			}
-			
 			h1 {
 				margin-bottom: 20px;
 				font-size: 45px;
@@ -169,8 +123,6 @@ const StyledHome = styled.main`
 				white-space: nowrap;
 				overflow: hidden;
 				position: relative;
-				line-height: 1; /* 줄 간격을 조정하여 텍스트 위치를 맞춤 */
-
 				.message {
 					display: block;
 					overflow: hidden;
@@ -178,14 +130,12 @@ const StyledHome = styled.main`
 					top: 0;
 					left: 80px;
 					animation: ${messageslide} 8s ease-in-out infinite;
-					
 					strong {
 						display: block;
 						color: ${(props) => props.theme.mainColor};
 					}
 				}
 			}
-			
 			p {
 				font-size: 16px;
 				line-height: 1.6;
@@ -194,29 +144,22 @@ const StyledHome = styled.main`
 				word-break: keep-all;
 			}
 		}
-		
 		section {
 			margin-bottom: 40px;
-			
 			h2 {
 				margin-bottom: 20px;
 				font-size: 26px;
 				font-weight: 600;
 			}
-			
 			ul {
 				display: flex;
 				flex-wrap: wrap;
-				padding: 0;
-				list-style: none;
-				
 				li {
 					width: 50%;
 					padding-bottom: 10px;
 					font-size: 16px;
 					font-weight: 500;
 					color: ${(props) => props.theme.mainColor};
-					
 					span {
 						font-weight: 400;
 						opacity: 0.8;
@@ -225,9 +168,8 @@ const StyledHome = styled.main`
 				}
 			}
 		}
-		
 		.more-btn {
-			padding: 0 40px;
+			padding: 0px 40px;
 			border-radius: 26px;
 			background-color: ${(props) => props.theme.mainColor};
 			font-size: 15px;
@@ -235,12 +177,8 @@ const StyledHome = styled.main`
 			color: #fff;
 			line-height: 46px;
 			letter-spacing: 0.5px;
-			text-decoration: none;
-			display: inline-block;
-			text-align: center;
 		}
 	}
-	
 	@media ${(props) => props.theme.laptop} {
 		.left {
 			.color-block {
@@ -251,24 +189,19 @@ const StyledHome = styled.main`
 				transform: rotate(-9deg);
 			}
 		}
-		
 		.right {
 			padding-right: 5%;
-			
 			.tit-wrap {
 				margin-bottom: 40px;
-				
 				h1 {
 					margin-bottom: 10px;
 					letter-spacing: -0.5px;
 				}
 			}
-			
 			section {
 				h2 {
 					margin-bottom: 10px;
 				}
-				
 				ul {
 					li {
 						width: 100%;
@@ -277,22 +210,18 @@ const StyledHome = styled.main`
 			}
 		}
 	}
-	
 	@media ${(props) => props.theme.mobile} {
 		flex-wrap: wrap;
-		
 		.left {
 			flex: none;
 			width: 100%;
 			overflow: hidden;
-			
 			.color-block {
 				left: -40vw;
 				width: 80vw;
 				min-width: 250px;
 				transform: rotate(-12deg);
 			}
-			
 			.img-box {
 				width: 90vw;
 				height: 55vh;
@@ -300,27 +229,22 @@ const StyledHome = styled.main`
 				background-position: center;
 			}
 		}
-		
 		.right {
 			width: 100%;
 			flex: none;
 			margin: 5vh 0;
 			padding-bottom: 5vh;
-			
 			.tit-wrap {
 				h1 {
 					font-size: 35px;
-					
 					.message {
 						left: 60px;
 						animation: ${messageslideMo} 8s ease-in-out infinite;
 					}
 				}
-				
 				h2 {
 					font-size: 20px;
 				}
-				
 				p {
 					padding-right: 5%;
 				}
