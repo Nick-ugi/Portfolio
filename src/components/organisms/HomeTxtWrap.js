@@ -7,15 +7,23 @@ import Heading from "../atoms/Heading";
 const messageSlideIn = keyframes`
   0% {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(30%);
   }
-  30%, 60% {
+  20% {
     opacity: 1;
     transform: translateY(0);
   }
-  90%, 100% {
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(-30%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30%);
   }
 `;
 
@@ -27,7 +35,7 @@ function AboutTxtWrap() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMessage((prev) => (prev + 1) % messages.length);
-    }, 5000); // Change message every 5 seconds
+    }, 6000); // Change message every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -48,6 +56,7 @@ function AboutTxtWrap() {
                 <strong
                   key={index}
                   className={`message-item ${index === currentMessage ? "active" : ""}`}
+                  index={index} // index 값을 전달
                 >
                   {message}
                 </strong>
@@ -145,7 +154,7 @@ const StyledHome = styled.main`
       margin-bottom: 60px;
       h2 {
         font-size: 22px;
-        color: #fff; /* 흰색으로 변경 */
+        color: #fff;
       }
       h1 {
         margin-bottom: 20px;
@@ -154,7 +163,7 @@ const StyledHome = styled.main`
         white-space: nowrap;
         overflow: hidden;
         position: relative;
-        color: #fff; /* 흰색으로 변경 */
+        color: #fff;
         .message {
           position: relative;
           width: 100%;
@@ -165,13 +174,22 @@ const StyledHome = styled.main`
             opacity: 0;
             position: absolute;
             top: 0;
-            left: 1rem; /* 1rem의 공백 추가 */
-            width: calc(100% - 1rem); /* 공백 공간을 포함한 전체 너비 설정 */
+            left: 1rem;
+            width: calc(100% - 1rem);
             text-align: center;
             transition: opacity 1s ease-in-out;
             &.active {
               opacity: 1;
-              animation: ${messageSlideIn} 5s ease-in-out infinite;
+              animation: ${messageSlideIn} 6s ease-in-out infinite;
+            }
+
+            @media ${(props) => props.theme.mobile} {
+              &.active {
+                opacity: 1;
+                animation: ${messageSlideIn} 6s ease-in-out infinite;
+                animation-delay: ${(props) => (props.index === 0 ? "0s" : "3")};
+                /* 첫 번째 메시지는 바로 시작하고 두 번째 메시지는 2.5초 후에 시작 */
+              }
             }
           }
         }
@@ -182,7 +200,7 @@ const StyledHome = styled.main`
         padding: 0 15% 0 0;
         max-width: 670px;
         word-break: keep-all;
-        color: #fff; /* 흰색으로 변경 */
+        color: #fff;
       }
     }
     section {
@@ -191,7 +209,7 @@ const StyledHome = styled.main`
         margin-bottom: 20px;
         font-size: 26px;
         font-weight: 600;
-        color: #fff; /* 흰색으로 변경 */
+        color: #fff;
       }
       ul {
         display: flex;
@@ -205,7 +223,7 @@ const StyledHome = styled.main`
           span {
             font-weight: 400;
             opacity: 0.8;
-            color: #fff; /* 흰색으로 변경 */
+            color: #fff;
           }
         }
       }
@@ -219,6 +237,9 @@ const StyledHome = styled.main`
       color: #fff;
       line-height: 46px;
       letter-spacing: 0.5px;
+      text-align: center;
+      position: relative;
+      bottom: 20px;
     }
   }
 
@@ -255,47 +276,48 @@ const StyledHome = styled.main`
   }
 
   @media ${(props) => props.theme.mobile} {
-    flex-wrap: wrap;
+    flex-direction: column;
+    height: auto;
     .left {
-      flex: none;
       width: 100%;
-      overflow: hidden;
       .color-block {
-        left: -40vw;
-        width: 80vw;
+        left: -20vw;
+        width: 120vw;
         min-width: 250px;
-        transform: rotate(-12deg);
+        transform: rotate(-10deg);
+        overflow: hidden;
       }
       .img-box {
-        width: 90vw;
-        height: 55vh;
-        margin: 3vh 5vw;
+        width: 100%;
+        height: 50vh;
+        margin: 3vh 0;
         background-position: center;
       }
     }
     .right {
-      width: 100%;
-      flex: none;
-      margin: 5vh 0;
-      padding-bottom: 5vh;
+      width: calc(100% - 40px);
+      background-color: #333;
+      z-index: 1;
+      padding: 0 20px;
+      margin: 0 auto;
       .tit-wrap {
+        margin-bottom: 40px;
         h1 {
           font-size: 35px;
-          .message {
-            strong {
-              animation: ${messageSlideIn} 6s ease-in-out infinite;
-              /* 공백 조정 */
-              left: 0; /* 공백 없음 */
-            }
-          }
         }
         h2 {
           font-size: 20px;
         }
         p {
-          padding-right: 5%;
+          padding-right: 0;
         }
       }
+    }
+    .more-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 `;

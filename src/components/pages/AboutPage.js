@@ -14,15 +14,14 @@ export class AboutPage extends Component {
 					<PageHeader titleBg="Skills">
 						About <span className="point">Me</span>
 					</PageHeader>
+					<section>
+						<Heading level="2">EDUCATION</Heading>
+						<ExperienceWrap />
+					</section>
 
 					<section>
 						<Heading level="2">MY SKILLS</Heading>
 						<SkillsWrap />
-					</section>
-
-					<section>
-						<Heading level="2">EXPERIENCE & EDUCATION</Heading>
-						<ExperienceWrap />
 					</section>
 				</StyledSkills>
 			</PageWrap>
@@ -31,6 +30,7 @@ export class AboutPage extends Component {
 }
 
 const StyledSkills = styled.main`
+	/* Background color and text color */
 	background-color: #333;
 	color: #fff;
 
@@ -42,34 +42,34 @@ const StyledSkills = styled.main`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
-		&:not(:last-child)::after {
-			content: "";
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 500px;
-			height: 1px;
-			background-color: #252525;
-		}
-
-		> h2 {
-			margin-bottom: 40px;
-			font-size: 26px;
-			font-weight: 600;
-			text-align: center;
-			color: #fff;
-		}
 	}
 
-	@media ${(props) => props.theme.mobile} {
+	section:not(:last-child)::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 500px;
+		height: 1px;
+		background-color: #252525;
+	}
+
+	h2 {
+		margin-bottom: 40px;
+		font-size: 26px;
+		font-weight: 600;
+		text-align: center;
+		color: #fff;
+	}
+
+	@media (max-width: 768px) {
 		section {
 			padding-bottom: 40px;
+		}
 
-			&:not(:last-child)::after {
-				width: 70%;
-			}
+		section:not(:last-child)::after {
+			width: 70%;
 		}
 	}
 `;

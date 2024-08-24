@@ -1,127 +1,226 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
-function Header(props) {
-	const [Load, setLoad] = useState(false);
-	useEffect(() => {
-		setTimeout(() => {
-			setLoad(true);
-		}, 700);
-		return () => setLoad(false);
-	}, []);
+// 애니메이션 정의
+const slideIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
-	return (
-		<StyledHeader className={`${Load ? "on" : ""}`}>
-			<ul>
-				<li className={props.page === "home" ? "active" : ""}>
-					<Link to="/">
-						<span>Home</span>
-						<i className="fas fa-home"></i>
-					</Link>
-				</li>
-				<li className={props.page === "about" ? "active" : ""}>
-					<Link to="/about">
-						<span>About</span>
-						<i className="fas fa-user"></i>
-					</Link>
-				</li>
-				<li className={props.page === "projects" ? "active" : ""}>
-					<Link to="/projects">
-						<span>Projects</span>
-						<i className="fas fa-tasks"></i>
-					</Link>
-				</li>
-				<li className={props.page === "blog" ? "active" : ""}>
+const slideOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+`;
 
-					{/* eslint-disable-next-line react/jsx-no-target-blank */}
-					<a href="https://www.notion.so/9f5fe7c8d4d14e0585aa10185543efbd" target="_blank">
-						<span>Blog</span>
-						<i className="fas fa-book"></i>
-					</a>
-				</li>
-				<li>
-					{/* eslint-disable-next-line react/jsx-no-target-blank */}
-					<a href="https://github.com/Nick-ugi" target="_blank">
-						<span>Github</span>
-						<i className="fab fa-github"></i>
-					</a>
-				</li>
-			</ul>
-		</StyledHeader>
-	);
-}
+const Header = (props) => {
+  const [Load, setLoad] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad(true);
+    }, 700);
+    return () => setLoad(false);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <StyledHeader className={`${Load ? "on" : ""}`}>
+      <div className="mobile-menu-icon" onClick={toggleMenu}>
+        <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
+      </div>
+      <ul className={`${isMenuOpen ? "open" : "closed"}`}>
+        <li className={props.page === "home" ? "active" : ""}>
+          <Link to="/">
+            <i className="fas fa-home"></i>
+            <span>Home</span>
+          </Link>
+        </li>
+        <li className={props.page === "about" ? "active" : ""}>
+          <Link to="/about">
+            <i className="fas fa-user"></i>
+            <span>About</span>
+          </Link>
+        </li>
+        <li className={props.page === "projects" ? "active" : ""}>
+          <Link to="/projects">
+            <i className="fas fa-tasks"></i>
+            <span>Projects</span>
+          </Link>
+        </li>
+        <li className={props.page === "blog" ? "active" : ""}>
+          <a href="https://second-mapusaurus-b0e.notion.site/9f5fe7c8d4d14e0585aa10185543efbd" target="_blank">
+            <i className="fas fa-book"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Nick-ugi" target="_blank">
+            <i className="fab fa-github"></i>
+            <span>Github</span>
+          </a>
+        </li>
+      </ul>
+    </StyledHeader>
+  );
+};
 
 const StyledHeader = styled.header`
-	position: fixed;
-	right: 20px;
-	top: 60px;
-	bottom: 0;
-	z-index: 100;
-	opacity: 0;
-	&.on {
-		top: 0;
-		opacity: 1;
-		transition: all 0.85s;
-	}
-	ul {
-		display: flex;
-		justify-content: center;
-		align-items: flex-end;
-		flex-direction: column;
-		height: 100%;
-		li {
-			position: relative;
-			&:not(:last-child) {
-				margin: 0 0 20px 0;
-			}
-			&.active {
-				a {
-					background-color: ${(props) => props.theme.mainColor};
-				}
-			}
-			&:hover {
-				a {
-					padding: 13px 14px 13px 25px;
-					background-color: ${(props) => props.theme.mainColor};
-					span {
-						position: relative;
-						opacity: 1;
-						padding-right: 10px;
-						color: #fff;
-					}
-				}
-			}
-			a {
-				display: inline-block;
-				padding: 13px 14px;
-				border-radius: 30px;
-				background: #2b2a2a;
-				transition: all 0.2s;
-				span {
-					position: absolute;
-					right: 0px;
-					display: inline-block;
-					opacity: 0;
-					font-size: 16px;
-					font-weight: 600;
-					letter-spacing: 0.5px;
-					line-height: 1.2;
-					text-transform: uppercase;
-					vertical-align: text-top;
-					transition: opacity 0.3s ease, padding 0.3s ease;
-					color: transparent;
-				}
-				i {
-					width: 25px;
-					height: 25px;
-					font-size: 20px;
-					text-align: center;
-					line-height: 25px;
-				}
-			}
-		}
-	}
+  position: fixed;
+  right: 20px;
+  top: 60px;
+  bottom: 0;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.85s ease-in-out;
+
+  &.on {
+    top: 0;
+    opacity: 1;
+  }
+
+  .mobile-menu-icon {
+    display: none;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 101;
+	text-align: end;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    &.open {
+      display: flex;
+      animation: ${slideIn} 0.5s ease-out forwards;
+    }
+
+    &.closed {
+      display: flex;
+      animation: ${slideOut} 0.5s ease-in forwards;
+      animation-fill-mode: forwards;
+    }
+
+    li {
+      position: relative;
+      margin: 0 0 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.active {
+        a {
+          background-color: ${(props) => props.theme.mainColor};
+          color: #fff;
+          width: auto;
+          padding: 13px 14px;
+          i {
+            opacity: 1;
+          }
+          span {
+            opacity: 1;
+            padding-left: 10px;
+          }
+        }
+      }
+
+      &:hover {
+        a {
+          background-color: ${(props) => props.theme.mainColor};
+          width: auto;
+          padding: 13px 14px;
+          i {
+            opacity: 1;
+          }
+          span {
+            opacity: 1;
+            padding-left: 10px;
+          }
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 13px 14px;
+        border-radius: 30px;
+        background: #2b2a2a;
+        color: transparent;
+        text-decoration: none;
+        width: 50px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        i {
+          width: 25px;
+          height: 25px;
+          font-size: 20px;
+          text-align: center;
+          line-height: 25px;
+          color: #fff;
+          transition: opacity 0.3s ease;
+        }
+        span {
+          opacity: 0;
+          font-size: 16px;
+          font-weight: 600;
+          color: #fff;
+          transition: opacity 0.3s ease, padding-left 0.3s ease;
+          padding-left: 0;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  @media ${(props) => props.theme.mobile} {
+    right: 10px;
+    top: 10px;
+
+    .mobile-menu-icon {
+      display: block;
+    }
+
+    ul {
+      display: none;
+      &.open {
+        display: flex;
+        animation: ${slideIn} 0.5s ease-out forwards;
+      }
+
+      &.closed {
+        display: flex;
+        animation: ${slideOut} 0.5s ease-in forwards;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
 `;
 
 export default Header;

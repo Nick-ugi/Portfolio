@@ -1,138 +1,112 @@
 import React from "react";
-import data from "../../assets/data/skilldata";
 import styled from "styled-components";
-import Heading from "../atoms/Heading";
+import skillData from "../../assets/data/skilldata";
 
-function ExperienceWrap() {
-	const experienceList = data.experienceList.map((list, idx) => (
-		<li key={idx}>
-			<div className="icon">
-				<i className="fas fa-building"></i>
-			</div>
-			<span className="time">{list.period}</span>
-			<Heading level="4">
-				{list.company}
-				<span className="place">{list.position}</span>
-			</Heading>
-			<p>{list.explain}</p>
-		</li>
-	));
-
-	const educationList = data.educationList.map((list, idx) => (
-		<li key={idx}>
-			<div className="icon">
-				<i className="fas fa-graduation-cap"></i>
-			</div>
-			<span className="time">{list.period}</span>
-			<Heading level="4">
-				{list.position}
-				<span className="place">{list.company}</span>
-			</Heading>
-			<p>{list.explain}</p>
-		</li>
-	));
-	return (
-		<StyledExpWrap>
-			<div className="experience">
-				<ul>{experienceList}</ul>
-			</div>
-			<div className="education">
-				<ul>{educationList}</ul>
-			</div>
-		</StyledExpWrap>
-	);
-}
+const ExperienceWrap = () => {
+  return (
+    <StyledExpWrap>
+      {skillData.educationList.map((edu, index) => (
+        <div key={index} className="education-item">
+          <div className="position">{edu.position}</div>
+          <div className="period">{edu.period}</div>
+          <div className="company">{edu.company}</div>
+          <div className="explain">
+            {edu.explain.map((item, idx) => (
+              <div key={idx} className="explain-item">
+                <div className="tech">{item.tech}</div>
+                {Array.isArray(item.description) ? (
+                  <ul className="description-list">
+                    {item.description.map((desc, i) => (
+                      <li key={i} className="description">{desc}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="description">{item.description}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </StyledExpWrap>
+  );
+};
 
 const StyledExpWrap = styled.div`
-	display: flex;
-	justify-content: space-between;
-	> div {
-		width: 50%;
-		> ul {
-			> li {
-				position: relative;
-				padding: 0 20px 0 60px;
-				margin: 0 0 50px;
-				&::after {
-					content: "";
-					position: absolute;
-					top: 0;
-					left: 20px;
-					bottom: 0;
-					border-left: 1px solid #333;
-				}
-				.icon {
-					position: absolute;
-					left: 0;
-					right: 0;
-					z-index: 1;
-					width: 40px;
-					height: 40px;
-					border-radius: 50%;
-					text-align: center;
-					line-height: 40px;
-					background-color: ${(props) => props.theme.mainColor};
-				}
-				.time {
-					display: inline-block;
-					padding: 1px 10px;
-					margin-bottom: 12px;
-					border-radius: 20px;
-					background-color: #252525;
-					font-size: 12px;
-					font-weight: 600;
-					letter-spacing: 0.6px;
-					opacity: 0.8;
-				}
-				> h4 {
-					margin: 7px 0 10px;
-					font-size: 18px;
-					font-weight: 500;
-					opacity: 0.8;
-					span {
-						position: relative;
-						padding-left: 26px;
-						font-size: 15px;
-						font-weight: 600;
-						opacity: 0.6;
-						&::before {
-							position: absolute;
-							content: "";
-							width: 10px;
-							height: 2px;
-							background-color: #fff;
-							left: 7px;
-							top: 9px;
-							opacity: 0.8;
-						}
-					}
-				}
-				> p {
-					font-size: 14px;
-				}
-			}
-		}
-	}
+  background-color: #444; /* 배경색을 SkillsWrap에 맞게 설정 */
+  padding: 20px; /* 적절한 패딩 추가 */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-	@media ${(props) => props.theme.laptop} {
-		width: 85%;
-		margin: auto;
-		> div {
-		}
-	}
-	@media ${(props) => props.theme.mobile} {
-		flex-wrap: wrap;
-		width: 90%;
+  .education-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #252525; /* 테두리 색상을 SkillsWrap에 맞게 설정 */
+    border-radius: 8px;
+    background-color: #333; /* 배경색을 SkillsWrap에 맞게 설정 */
+  }
 
-		> div {
-			width: 100%;
-			> ul {
-				> li {
-					padding: 0 50px 0 50px;
-				}
-			}
-		}
-	}
+  .period {
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6); /* 텍스트 색상 */
+    margin-bottom: 10px;
+  }
+
+  .position {
+    color: ${(props) => props.theme.mainColor}; /* 아이콘 색상 */  
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .company {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6); /* 텍스트 색상 */
+    margin-bottom: 20px;
+  }
+
+  .explain-item {
+    margin-bottom: 20px;
+  }
+
+  .tech {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .description-list {
+    margin-left: 20px;
+    list-style-type: none; /* 기본 점 제거 */
+    padding-left: 0; /* 기본 패딩 제거 */
+  }
+
+  .description {
+    margin-left: 20px;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.8); /* 텍스트 색상 */
+    line-height: 1.6; /* 줄 간격 */
+  }
+
+  .description-list li {
+    position: relative;
+    padding-left: 30px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background: ${(props) => props.theme.mainColor}; /* 포인트 색상 */
+      border-radius: 50%;
+    }
+  }
 `;
 
 export default ExperienceWrap;
