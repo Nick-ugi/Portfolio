@@ -1,27 +1,27 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Header from "../organisms/Header";
 import PageHeader from "../molecules/PageHeader";
 import DetailWrap from "../organisms/DetailWrap";
 import data from "../../assets/data/portfoilodata";
 
-function ProjectDetail({ match }) {
-	const portfolioInfo = data.portfolioList.filter((info, idx) => {
-		if (info.name === match.params.name) return info;
-	});
+function ProjectDetail() {
+  const { name } = useParams();
+  const portfolioInfo = data.portfolioList.find(info => info.name === name);
 
-	return (
-		<div>
-			<Header />
-			<main>
-				<PageHeader titleBg="Works">
-					It's <span className="point">{match.params.name}</span>
-				</PageHeader>
-				<section>
-					<DetailWrap project={portfolioInfo[0]} />
-				</section>
-			</main>
-		</div>
-	);
+  return (
+    <div>
+      <Header />
+      <main>
+        <PageHeader titleBg="Works">
+          It's <span className="point">{name}</span>
+        </PageHeader>
+        <section>
+          {portfolioInfo ? <DetailWrap project={portfolioInfo} /> : <p>Project not found</p>}
+        </section>
+      </main>
+    </div>
+  );
 }
 
 export default ProjectDetail;

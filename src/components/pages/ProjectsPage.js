@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PageWrap from "../templates/PageWrap";
 import PageHeader from "../molecules/PageHeader";
+import Heading from "../atoms/Heading";
 import PortfolioMain from "../organisms/PortfolioMain";
-import PortfolioMini from "../organisms/PortfolioMini";
+import SkillsWrap from "../organisms/SkillsWrap";
 
 export class ProjectsPage extends Component {
 	render() {
@@ -14,7 +15,10 @@ export class ProjectsPage extends Component {
 					</PageHeader>
 					<section>
 						<PortfolioMain />
-						<PortfolioMini />
+					</section>
+					<section>
+						<Heading level="2">MY SKILLS</Heading>
+						<SkillsWrap />
 					</section>
 				</main>
 			</PageWrap>

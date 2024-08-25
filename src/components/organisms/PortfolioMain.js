@@ -2,7 +2,51 @@ import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import data from "../../assets/data/portfoilodata";
 import { Link } from "react-router-dom";
+import defaultLogo from "../../assets/images/JAVA.png"; // Import a default image if needed
 
+// PortfolioItem 컴포넌트 정의
+const PortfolioItem = ({ list }) => {
+  let logoImage;
+  try {
+    logoImage = require(`../../assets/images/${list.logo}.png`);
+  } catch (e) {
+    logoImage = defaultLogo;
+  }
+
+  return (
+    <li className="port-list">
+      <Link to={`/projects/${list.name}`}>
+        <div>
+          <div className="info-wrap">
+            <div className="txt-wrap">
+              <div className="name">{list.name}</div>
+              <span className="time">{list.period}</span>
+              <p>
+                <span className="label">Description</span>
+                {list.description}
+              </p>
+            </div>
+            <div className="tech">
+              <span className="label">Tech Stack</span>
+              <ul>
+                {list.tech.map((tech, idx) => (
+                  <li key={idx}>{tech}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="logoWrap">
+          <div className="logo">
+            <img src={logoImage} alt={`${list.name} Logo`} />
+          </div>
+        </div>
+      </Link>
+    </li>
+  );
+};
+
+// PortfolioMain 컴포넌트 정의
 class PortfolioMain extends Component {
   componentDidMount() {
     const nodes = Array.from(document.querySelectorAll(".port-list"));
@@ -48,52 +92,19 @@ class PortfolioMain extends Component {
   }
 
   render() {
-    const portfolioList = data.portfolioList.map((list, idx) => (
-      <li key={idx} className="port-list">
-        <Link to={`/projects/${list.name}`}>
-          <div>
-            {list.project === "Toy" && (
-              <div className="toy">
-                <img src="./images/toy.png" alt="Toy" />
-              </div>
-            )}
-
-            <div className="info-wrap">
-              <div className="txt-wrap">
-                <div className="name">{list.name}</div>
-                <span className="time">{list.period}</span>
-                <p>
-                  <span className="label">Description</span>
-                  {list.description}
-                </p>
-              </div>
-              <div className="tech">
-                <span className="label">Tech Stack</span>
-                <ul>
-                  {list.tech.map((tech, idx) => (
-                    <li key={idx}>{tech}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="logoWrap">
-            <div className="logo">
-              <img src={`./images/logo/${list.logo}.png`} alt={`${list.name} Logo`} />
-            </div>
-          </div>
-        </Link>
-      </li>
-    ));
-
     return (
       <StyledPortWrap className="container">
-        <ul>{portfolioList}</ul>
+        <ul>
+          {data.portfolioList.map((list, idx) => (
+            <PortfolioItem key={idx} list={list} />
+          ))}
+        </ul>
       </StyledPortWrap>
     );
   }
 }
 
+// 애니메이션 정의
 const slideIn = (direction) => keyframes`
   from {
     top: ${direction === "top" ? "-100%" : direction === "bottom" ? "100%" : "0"};
@@ -120,6 +131,7 @@ const slideOut = (direction) => keyframes`
   }
 `;
 
+// 스타일 컴포넌트 정의
 const StyledPortWrap = styled.div`
   width: 85%;
   max-width: 1140px;
@@ -134,13 +146,13 @@ const StyledPortWrap = styled.div`
     list-style: none;
 
     > li {
-      width: 32%;
-      min-height: 320px;
+      width: 48%;  // Adjust width to fit your layout
+      min-height: 500px;  // Increased min-height for vertical expansion
       margin-bottom: 2%;
       position: relative;
       background-color: #191919;
       border-radius: 2px;
-      overflow: hidden;
+      overflow: hidden;  // Ensure content doesn't overflow out of the item
       cursor: pointer;
       transition: transform 300ms ease;
 
@@ -155,18 +167,6 @@ const StyledPortWrap = styled.div`
           padding: 20px;
           pointer-events: none;
 
-          .toy {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 30px;
-            color: ${(props) => props.theme.mainColor};
-            
-            img {
-              width: 45px;
-            }
-          }
-
           .info-wrap {
             position: relative;
             z-index: 1;
@@ -178,43 +178,49 @@ const StyledPortWrap = styled.div`
             .txt-wrap {
               .name {
                 font-weight: 500;
-                font-size: 22px;
+                font-size: 24px;  // Increase font size
                 line-height: 1.3;
                 color: ${(props) => props.theme.mainColor};
               }
               .time {
-                font-size: 14px;
+                font-size: 16px;  // Increase font size
               }
               p {
-                padding: 10px 0;
-                font-size: 14px;
+                padding: 15px 0;  // Increase padding
+                font-size: 16px;  // Increase font size
                 color: ${(props) => props.theme.textColor || "#fff"};
               }
             }
 
             .tech {
+              display: flex;
+              flex-direction: column;  // Stack tech items vertically
+              flex: 1;  // Allow the tech section to grow and fit
+              margin-top: 20px;  // Add some space above tech section
+
+              span.label {
+                display: block;
+                padding-bottom: 5px;  // Increase padding
+                font-size: 14px;  // Increase font size
+                font-weight: 500;
+              }
+
               ul {
                 display: flex;
-                flex-wrap: wrap;
+                flex-wrap: wrap;  // Wrap tech items to the next line if needed
                 margin: 0;
-                padding-top: 3px;
+                padding: 0;
+                list-style: none;  // Remove default list styles
 
                 li {
-                  padding: 4px;
-                  margin: 0 2px 5px;
+                  padding: 6px;  // Adjust padding
+                  margin: 0 4px 6px;  // Adjust margin
                   border: 1px solid #fff;
                   border-radius: 2px;
-                  font-size: 13px;
+                  font-size: 14px;  // Increase font size
                   line-height: 1;
                 }
               }
-            }
-
-            span.label {
-              display: block;
-              padding-bottom: 3px;
-              font-size: 12px;
-              font-weight: 500;
             }
           }
         }
@@ -233,7 +239,8 @@ const StyledPortWrap = styled.div`
           .logo {
             img {
               border-radius: 1px;
-              padding: 3px;
+              padding: 5px;  // Adjust padding if needed
+              width: 80px;  // Adjust logo image size if needed
             }
           }
         }
@@ -269,24 +276,24 @@ const StyledPortWrap = styled.div`
   @media ${(props) => props.theme.laptop} {
     > ul {
       .port-list {
-        width: 49%;
-        min-height: 260px;
+        width: 49%;  // Adjust width for laptop screens
+        min-height: 400px;  // Adjust min-height for laptop screens
       }
     }
   }
 
   @media ${(props) => props.theme.mobile} {
-    width: 80%;
+    width: 90%;
     padding-bottom: 60px;
 
     > ul {
       .port-list {
         width: 100%;
-        min-height: 220px;
+        min-height: 300px;  // Increase min-height for mobile screens
         margin-bottom: 20px;
 
         .tech {
-          display: none;
+          display: none;  // Hide tech stack on mobile if needed
         }
       }
     }

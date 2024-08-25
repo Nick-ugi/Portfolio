@@ -14,17 +14,6 @@ const slideIn = keyframes`
   }
 `;
 
-const slideOut = keyframes`
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-`;
-
 const Header = (props) => {
   const [Load, setLoad] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +34,7 @@ const Header = (props) => {
       <div className="mobile-menu-icon" onClick={toggleMenu}>
         <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
       </div>
-      <ul className={`${isMenuOpen ? "open" : "closed"}`}>
+      <ul className={`${isMenuOpen ? "open" : ""}`}>
         <li className={props.page === "home" ? "active" : ""}>
           <Link to="/">
             <i className="fas fa-home"></i>
@@ -101,7 +90,9 @@ const StyledHeader = styled.header`
     color: #fff;
     cursor: pointer;
     z-index: 101;
-	text-align: end;
+	direction: rtl;
+
+	
   }
 
   ul {
@@ -113,17 +104,13 @@ const StyledHeader = styled.header`
     padding: 0;
     margin: 0;
     list-style: none;
-    transition: opacity 0.5s ease, transform 0.5s ease;
 
-    &.open {
-      display: flex;
-      animation: ${slideIn} 0.5s ease-out forwards;
-    }
-
-    &.closed {
-      display: flex;
-      animation: ${slideOut} 0.5s ease-in forwards;
-      animation-fill-mode: forwards;
+    @media ${(props) => props.theme.mobile} {
+      display: none;
+      &.open {
+        display: flex;
+        animation: ${slideIn} 0.5s ease-out forwards;
+      }
     }
 
     li {
@@ -205,20 +192,7 @@ const StyledHeader = styled.header`
 
     .mobile-menu-icon {
       display: block;
-    }
 
-    ul {
-      display: none;
-      &.open {
-        display: flex;
-        animation: ${slideIn} 0.5s ease-out forwards;
-      }
-
-      &.closed {
-        display: flex;
-        animation: ${slideOut} 0.5s ease-in forwards;
-        animation-fill-mode: forwards;
-      }
     }
   }
 `;

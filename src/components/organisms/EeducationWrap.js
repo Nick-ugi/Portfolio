@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import skillData from "../../assets/data/skilldata";
+import educationdata from "../../assets/data/educationdata";
 
 const ExperienceWrap = () => {
   return (
-    <StyledExpWrap>
-      {skillData.educationList.map((edu, index) => (
+    <StyledEducationWrap>
+      {educationdata.educationList.map((edu, index) => (
         <div key={index} className="education-item">
           <div className="position">{edu.position}</div>
           <div className="period">{edu.period}</div>
@@ -28,22 +28,30 @@ const ExperienceWrap = () => {
           </div>
         </div>
       ))}
-    </StyledExpWrap>
+    </StyledEducationWrap>
   );
 };
 
-const StyledExpWrap = styled.div`
+const StyledEducationWrap = styled.div`
   background-color: #444; /* 배경색을 SkillsWrap에 맞게 설정 */
   padding: 20px; /* 적절한 패딩 추가 */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  display: flex;
+  flex-wrap: wrap; /* 아이템이 화면을 넘어가면 다음 줄로 이동 */
+  gap: 20px; /* 아이템 간의 간격 설정 */
 
   .education-item {
+    flex: 1 1 calc(33.333% - 20px); /* 각 아이템의 너비를 3등분으로 설정하고 간격을 고려 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함하여 너비를 계산 */
     margin-bottom: 30px;
     padding: 20px;
     border: 1px solid #252525; /* 테두리 색상을 SkillsWrap에 맞게 설정 */
     border-radius: 8px;
     background-color: #333; /* 배경색을 SkillsWrap에 맞게 설정 */
+    display: flex;
+    flex-direction: column; /* 내용이 세로로 배열되도록 설정 */
   }
 
   .period {

@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Heading from "../atoms/Heading";
 import PageHeader from "../molecules/PageHeader";
-import ExperienceWrap from "../organisms/ExperienceWrap";
-import SkillsWrap from "../organisms/SkillsWrap";
+import EeducationWrap from "../organisms/EeducationWrap";
+import SocialExperienceWrap from "../organisms/SocialExperienceWrap";
+import CertificateWrap from "../organisms/CertificateWrap";
+import WorkExperienceWrap from "../organisms/WorkExperienceWrap";
 import PageWrap from "../templates/PageWrap";
 
 export class AboutPage extends Component {
@@ -16,12 +18,25 @@ export class AboutPage extends Component {
 					</PageHeader>
 					<section>
 						<Heading level="2">EDUCATION</Heading>
-						<ExperienceWrap />
+						<EeducationWrap />
 					</section>
 
-					<section>
+					{/* <section>
 						<Heading level="2">MY SKILLS</Heading>
 						<SkillsWrap />
+					</section> */}
+
+					<section>
+						<Heading level="2">MY Experience</Heading>
+						<SocialExperienceWrap />
+					</section>
+					<section>
+						<Heading level="2">MY Experience</Heading>
+						<CertificateWrap />
+					</section>
+					<section>
+						<Heading level="2">MY Experience</Heading>
+						<WorkExperienceWrap />
 					</section>
 				</StyledSkills>
 			</PageWrap>

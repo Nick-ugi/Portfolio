@@ -95,6 +95,7 @@ function AboutTxtWrap() {
   );
 }
 
+/* StyledHome 컴포넌트의 스타일 */
 const StyledHome = styled.main`
   display: flex;
   height: 100vh;
@@ -107,6 +108,7 @@ const StyledHome = styled.main`
     position: relative;
     max-width: 600px;
     background-color: #111;
+
     &::after {
       content: "";
       display: inline-block;
@@ -119,6 +121,7 @@ const StyledHome = styled.main`
       height: 100%;
       background-color: ${(props) => props.theme.mainColor};
     }
+
     .color-block {
       position: absolute;
       top: -60%;
@@ -129,6 +132,7 @@ const StyledHome = styled.main`
       transform: rotate(-12deg);
       background-color: ${(props) => props.theme.mainColor};
     }
+
     .img-box {
       height: 90vh;
       margin: 5vh 0 0 30px;
@@ -149,25 +153,32 @@ const StyledHome = styled.main`
     justify-content: center;
     align-items: flex-start;
     padding: 0 10% 0 7%;
+    margin-top: 10%; /* 중앙 정렬을 위한 margin-top 추가 */
+
     .tit-wrap {
       position: relative;
       margin-bottom: 60px;
+      margin-top: 20px; /* 제목 영역 위쪽에 margin 추가 */
+
       h2 {
-        font-size: 22px;
+        font-size: 24px; /* 글자 크기 증가 */
         color: #fff;
       }
+
       h1 {
         margin-bottom: 20px;
-        font-size: 45px;
+        font-size: 50px; /* 글자 크기 증가 */
         font-weight: bold;
+        color: #fff;
         white-space: nowrap;
         overflow: hidden;
         position: relative;
-        color: #fff;
+
         .message {
           position: relative;
           width: 100%;
           height: auto;
+
           strong {
             display: block;
             color: ${(props) => props.theme.mainColor};
@@ -178,6 +189,7 @@ const StyledHome = styled.main`
             width: calc(100% - 1rem);
             text-align: center;
             transition: opacity 1s ease-in-out;
+
             &.active {
               opacity: 1;
               animation: ${messageSlideIn} 6s ease-in-out infinite;
@@ -185,15 +197,13 @@ const StyledHome = styled.main`
 
             @media ${(props) => props.theme.mobile} {
               &.active {
-                opacity: 1;
-                animation: ${messageSlideIn} 6s ease-in-out infinite;
-                animation-delay: ${(props) => (props.index === 0 ? "0s" : "3")};
-                /* 첫 번째 메시지는 바로 시작하고 두 번째 메시지는 2.5초 후에 시작 */
+                animation-delay: ${(props) => (props.index === 0 ? "0s" : "3s")};
               }
             }
           }
         }
       }
+
       p {
         font-size: 16px;
         line-height: 1.6;
@@ -203,23 +213,28 @@ const StyledHome = styled.main`
         color: #fff;
       }
     }
+
     section {
       margin-bottom: 40px;
+
       h2 {
         margin-bottom: 20px;
         font-size: 26px;
         font-weight: 600;
         color: #fff;
       }
+
       ul {
         display: flex;
         flex-wrap: wrap;
+
         li {
           width: 50%;
           padding-bottom: 10px;
           font-size: 16px;
           font-weight: 500;
           color: ${(props) => props.theme.mainColor};
+
           span {
             font-weight: 400;
             opacity: 0.8;
@@ -228,8 +243,9 @@ const StyledHome = styled.main`
         }
       }
     }
+
     .more-btn {
-      padding: 0px 40px;
+      padding: 0 40px;
       border-radius: 26px;
       background-color: ${(props) => props.theme.mainColor};
       font-size: 15px;
@@ -253,19 +269,26 @@ const StyledHome = styled.main`
         transform: rotate(-9deg);
       }
     }
+
     .right {
       padding-right: 5%;
+      margin-top: 5%; /* 오른쪽 박스의 margin-top 조정 */
+
       .tit-wrap {
         margin-bottom: 40px;
+        margin-top: 10px; /* 제목 영역 위쪽 margin 조정 */
+
         h1 {
           margin-bottom: 10px;
           letter-spacing: -0.5px;
         }
       }
+
       section {
         h2 {
           margin-bottom: 10px;
         }
+
         ul {
           li {
             width: 100%;
@@ -278,8 +301,10 @@ const StyledHome = styled.main`
   @media ${(props) => props.theme.mobile} {
     flex-direction: column;
     height: auto;
+
     .left {
       width: 100%;
+
       .color-block {
         left: -20vw;
         width: 120vw;
@@ -287,6 +312,7 @@ const StyledHome = styled.main`
         transform: rotate(-10deg);
         overflow: hidden;
       }
+
       .img-box {
         width: 100%;
         height: 50vh;
@@ -294,25 +320,33 @@ const StyledHome = styled.main`
         background-position: center;
       }
     }
+
     .right {
       width: calc(100% - 40px);
       background-color: #333;
       z-index: 1;
       padding: 0 20px;
       margin: 0 auto;
+      margin-top: 10%; /* 모바일에서도 margin-top 추가 */
+
       .tit-wrap {
         margin-bottom: 40px;
+        margin-top: 10px; /* 모바일에서도 margin-top 조정 */
+
         h1 {
           font-size: 35px;
         }
+
         h2 {
           font-size: 20px;
         }
+
         p {
           padding-right: 0;
         }
       }
     }
+
     .more-btn {
       position: absolute;
       bottom: 20px;
