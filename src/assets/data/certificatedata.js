@@ -3,7 +3,7 @@ const certificatedata = {
 	  {
 		label: "IELTS 5.5",
 		date: "2021.07",
-		publisher: "영어"
+		publisher: "IDP"
 	  },
 	  {
 		label: "1종보통운전면허",

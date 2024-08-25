@@ -27,15 +27,15 @@ export class AboutPage extends Component {
 					</section> */}
 
 					<section>
-						<Heading level="2">MY Experience</Heading>
+						<Heading level="2">Social Experience</Heading>
 						<SocialExperienceWrap />
 					</section>
 					<section>
-						<Heading level="2">MY Experience</Heading>
+						<Heading level="2">Certificate</Heading>
 						<CertificateWrap />
 					</section>
 					<section>
-						<Heading level="2">MY Experience</Heading>
+						<Heading level="2">Work Experience</Heading>
 						<WorkExperienceWrap />
 					</section>
 				</StyledSkills>

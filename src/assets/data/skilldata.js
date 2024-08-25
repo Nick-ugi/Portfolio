@@ -46,7 +46,7 @@ const skillData = {
 			  "DOM 조작 및 이벤트 핸들링을 위한 다양한 기능을 사용할 수 있습니다.",
 			  "AJAX를 통해 비동기 데이터 요청을 처리할 수 있습니다."
 			],
-			icon: "fab fa-jquery",
+			icon: "fas fa-code",
 		  },
 		  {
 			label: "Git & GitHub",
@@ -86,7 +86,7 @@ const skillData = {
 			  "코드 편집 및 디버깅을 위한 기능을 활용하여 효율적인 개발 환경을 구축할 수 있습니다.",
 			  "다양한 확장 기능을 사용하여 개발 생산성을 높일 수 있습니다."
 			],
-			icon: "fab fa-vscode",
+			icon: "fas fa-terminal",
 		  },
 		  {
 			label: "Eclipse",
@@ -102,7 +102,7 @@ const skillData = {
 			  "Java 및 Kotlin을 포함한 다양한 언어의 개발을 지원합니다.",
 			  "강력한 코드 분석 및 자동 완성 기능을 활용할 수 있습니다."
 			],
-			icon: "fab fa-intellij",
+			icon: "fas fa-laptop-code",
 		  },	
 	],
 };

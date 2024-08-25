@@ -84,8 +84,22 @@ const portfolioData = {
 			period: "2024.03 ~ 2024.04",
 			percent: "100%",
 			github: "https://github.com/Nick-ugi/projectMocadream",
-			description: "스터디 룸 대여를 위한 웹사이트 개발 프로젝트입니다.",
-			tech: ["Html & CSS", "Javascript", "React", "Redux", "Node.js", "MongoDB", "Mongoose"],
+			description: 
+			"“스마트한 공간대여 시스템”\n스터디 공간대여를 위한 웹사이트 개발 프로젝트입니다.\n" +
+			"관리자와 유저의 관점에서 사용가능한 웹사이트이며, 공간예약 기능와, CRUD를 통한 관리가 가능합니다. 약 3주동안 진행하였습니다",
+			tech: [
+				"Ecilipse",
+				"AWS",
+				"HTML",
+				"JavaScript",
+				"CSS",
+				"Ajax",
+				"jQuery",
+				"Oracle",
+				"Apache Tomcat",
+				"Bootstrap",
+				"OpenAPI",
+					],
 			image: [
 				{
 					name: "https://github.com/Nick-ugi/projectMocadream/assets/168390629/a9a57220-76f0-484e-8fbe-1895ef55991f",

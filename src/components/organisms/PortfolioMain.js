@@ -22,7 +22,7 @@ const PortfolioItem = ({ list }) => {
               <div className="name">{list.name}</div>
               <span className="time">{list.period}</span>
               <p>
-                <span className="label">Description</span>
+                <span className="label">Description</span><br/>
                 {list.description}
               </p>
             </div>
