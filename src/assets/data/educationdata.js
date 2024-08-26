@@ -6,12 +6,6 @@ const educationdata = {
 		  "position": "Spring과 Vue.js 프로젝트 교육",
 		  "company": "이노시스 컴퍼니",
 		  "explain": [
-			{ "tech": "AJAX",
-				"description": [
-				  "비동기 통신을 통해 웹 페이지의 동적 업데이트 구현",
-				  "서버와의 비동기 통신을 통해 사용자 경험 개선",
-				  "페이지 리로드 없이 데이터 전송 및 수신 처리",
-			]},
 			{ "tech": "Spring 프레임워크",
 				"description": [
 				  "IoC(제어의 역전)와 DI(의존성 주입) 개념을 이해하고 적용",
@@ -60,7 +54,6 @@ const educationdata = {
 			  "DB 모델링 기법 및 정규화",
 			  "트랜젝션의 개념과 처리 방법과 PL/SQL 작성"
 			]},
-			{ "tech": "Tomcat 9.0", "description": "서버 구축 작업 및 사용 가능" },
 			{ "tech": "AWS", "description": "아마존웹서비스를 통한 애플리케이션 웹프로젝트 환경 구현" },
 			{ "tech": "IDE/ DB Tool", "description": [
 			  "Eclipse STS를 이용한 자바 코드 작성",

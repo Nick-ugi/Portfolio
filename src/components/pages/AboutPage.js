@@ -45,9 +45,6 @@ export class AboutPage extends Component {
 }
 
 const StyledSkills = styled.main`
-	/* Background color and text color */
-	background-color: #333;
-	color: #fff;
 
 	section {
 		max-width: 1140px;
@@ -68,14 +65,6 @@ const StyledSkills = styled.main`
 		width: 500px;
 		height: 1px;
 		background-color: #252525;
-	}
-
-	h2 {
-		margin-bottom: 40px;
-		font-size: 26px;
-		font-weight: 600;
-		text-align: center;
-		color: #fff;
 	}
 
 	@media (max-width: 768px) {

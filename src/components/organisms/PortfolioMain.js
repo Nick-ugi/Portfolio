@@ -138,6 +138,16 @@ const StyledPortWrap = styled.div`
   margin: auto;
   padding-bottom: 80px;
 
+  section {
+  max-width: 1140px;
+  margin: auto;
+  padding-bottom: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
   > ul {
     display: flex;
     flex-wrap: wrap;

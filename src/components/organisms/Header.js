@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // 애니메이션 정의
 const slideIn = keyframes`
@@ -15,59 +15,80 @@ const slideIn = keyframes`
 `;
 
 const Header = (props) => {
-  const [Load, setLoad] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [Load, setLoad] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const navigate = useNavigate(); // useNavigate hook for navigation
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoad(true);
-    }, 700);
-    return () => setLoad(false);
-  }, []);
+	useEffect(() => {
+		setTimeout(() => {
+			setLoad(true);
+		}, 700);
+		return () => setLoad(false);
+	}, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
 
-  return (
-    <StyledHeader className={`${Load ? "on" : ""}`}>
-      <div className="mobile-menu-icon" onClick={toggleMenu}>
-        <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
-      </div>
-      <ul className={`${isMenuOpen ? "open" : ""}`}>
-        <li className={props.page === "home" ? "active" : ""}>
-          <Link to="/">
-            <i className="fas fa-home"></i>
-            <span>Home</span>
-          </Link>
-        </li>
-        <li className={props.page === "about" ? "active" : ""}>
-          <Link to="/about">
-            <i className="fas fa-user"></i>
-            <span>About</span>
-          </Link>
-        </li>
-        <li className={props.page === "projects" ? "active" : ""}>
-          <Link to="/projects">
-            <i className="fas fa-tasks"></i>
-            <span>Projects</span>
-          </Link>
-        </li>
-        <li className={props.page === "blog" ? "active" : ""}>
-          <a href="https://second-mapusaurus-b0e.notion.site/9f5fe7c8d4d14e0585aa10185543efbd" target="_blank">
-            <i className="fas fa-book"></i>
-            <span>Blog</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/Nick-ugi" target="_blank">
-            <i className="fab fa-github"></i>
-            <span>Github</span>
-          </a>
-        </li>
-      </ul>
-    </StyledHeader>
-  );
+	// Scroll to top function
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	const handleNavigation = (path) => {
+		scrollToTop(); // Scroll to the top
+		navigate(path); // Navigate to the path
+	};
+
+	return (
+		<StyledHeader className={`${Load ? "on" : ""}`}>
+			<div className="mobile-menu-icon" onClick={toggleMenu}>
+				<i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
+			</div>
+			<ul className={`${isMenuOpen ? "open" : ""}`}>
+				<li className={props.page === "home" ? "active" : ""}>
+					<Link to="/" onClick={() => handleNavigation('/')}>
+						<i className="fas fa-home"></i>
+						<span>Home</span>
+					</Link>
+				</li>
+				<li className={props.page === "about" ? "active" : ""}>
+					<Link to="/about" onClick={() => handleNavigation('/about')}>
+						<i className="fas fa-user"></i>
+						<span>About</span>
+					</Link>
+				</li>
+				<li className={props.page === "projects" ? "active" : ""}>
+					<Link to="/projects" onClick={() => handleNavigation('/projects')}>
+						<i className="fas fa-tasks"></i>
+						<span>Projects</span>
+					</Link>
+				</li>
+				<li className={props.page === "blog" ? "active" : ""}>
+					<a
+						href="https://second-mapusaurus-b0e.notion.site/9f5fe7c8d4d14e0585aa10185543efbd"
+						target="_blank"
+						rel="noopener noreferrer"
+						onClick={scrollToTop} // Ensure scroll to top when opening external links
+					>
+						<i className="fas fa-book"></i>
+						<span>Blog</span>
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://github.com/Nick-ugi"
+						target="_blank"
+						rel="noopener noreferrer"
+						onClick={scrollToTop} // Ensure scroll to top when opening external links
+					>
+						<i className="fab fa-github"></i>
+						<span>Github</span>
+					</a>
+				</li>
+			</ul>
+		</StyledHeader>
+	);
 };
 
 const StyledHeader = styled.header`
@@ -90,9 +111,7 @@ const StyledHeader = styled.header`
     color: #fff;
     cursor: pointer;
     z-index: 101;
-	direction: rtl;
-
-	
+    direction: rtl;
   }
 
   ul {
@@ -192,7 +211,6 @@ const StyledHeader = styled.header`
 
     .mobile-menu-icon {
       display: block;
-
     }
   }
 `;

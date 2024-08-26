@@ -21,48 +21,26 @@ main {
   color: #fff;
 }
 
-section {
-  max-width: 1140px;
-  margin: auto;
-  padding-bottom: 80px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-section:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 1px;
-  background-color: #252525;
-}
-
 h2 {
   margin-bottom: 40px;
   font-size: 26px;
   font-weight: 600;
-  text-align: center;
   color: #fff;
 }
 
-/* 링크 태그 기본 색상 및 방문 색상 제거 */
+
 a {
-  color: inherit; /* 링크의 기본 색상 설정 (inherit는 부모 요소의 색상을 사용) */
-  text-decoration: none; /* 링크에 밑줄 제거 */
+  color: inherit;
+  text-decoration: none;
 }
 
 a:visited {
-  color: inherit; /* 방문한 링크 색상 설정 */
+  color: inherit;
 }
 
 a:hover,
 a:focus {
-  text-decoration: underline; /* 호버 및 포커스 시 밑줄 표시 */
+  text-decoration: underline;
 }
 
 /* 반응형 스타일 */
@@ -76,9 +54,9 @@ a:focus {
   }
 }
 
-/* ul 태그의 머리 아이콘 제거 */
+
 ul {
-  list-style: none; /* 불릿 제거 */
-  padding: 0; /* 패딩 제거 */
-  margin: 0; /* 마진 제거 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

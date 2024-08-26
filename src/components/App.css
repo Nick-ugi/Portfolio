@@ -4,7 +4,7 @@
 
 .App-logo {
   height: 40vmin;
-  pointer-events: none; /* 로고에 클릭 이벤트가 필요 없다면 유지 */
+  pointer-events: none; 
 }
 
 @media (prefers-reduced-motion: no-preference) {

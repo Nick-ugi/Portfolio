@@ -3,30 +3,6 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import Heading from "../atoms/Heading";
 
-// 애니메이션 정의
-const messageSlideIn = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(30%);
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  80% {
-    opacity: 0;
-    transform: translateY(-30%);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-30%);
-  }
-`;
-
 // Component Function
 function AboutTxtWrap() {
   const [currentMessage, setCurrentMessage] = useState(0);
@@ -94,7 +70,29 @@ function AboutTxtWrap() {
     </StyledHome>
   );
 }
-
+// 애니메이션 정의
+const messageSlideIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+`;
 /* StyledHome 컴포넌트의 스타일 */
 const StyledHome = styled.main`
   display: flex;
@@ -134,7 +132,8 @@ const StyledHome = styled.main`
     }
 
     .img-box {
-      height: 90vh;
+	  width: 45vh;
+      height: 65vh;
       margin: 5vh 0 0 30px;
       background-image: url(${(props) => props.theme.mainSrc});
       background-size: cover;
@@ -153,26 +152,27 @@ const StyledHome = styled.main`
     justify-content: center;
     align-items: flex-start;
     padding: 0 10% 0 7%;
-    margin-top: 10%; /* 중앙 정렬을 위한 margin-top 추가 */
+    // margin-top: 10%; /* 중앙 정렬을 위한 margin-top 추가 */
 
     .tit-wrap {
-      position: relative;
+    //   position: relative;
       margin-bottom: 60px;
-      margin-top: 20px; /* 제목 영역 위쪽에 margin 추가 */
+    //   margin-top: 20px; /* 제목 영역 위쪽에 margin 추가 */
 
       h2 {
-        font-size: 24px; /* 글자 크기 증가 */
+        font-size: 22px; /* 글자 크기 증가 */
         color: #fff;
       }
 
       h1 {
         margin-bottom: 20px;
-        font-size: 50px; /* 글자 크기 증가 */
+        font-size: 45px; /* 글자 크기 증가 */
         font-weight: bold;
-        color: #fff;
+        // color: #fff;
         white-space: nowrap;
         overflow: hidden;
         position: relative;
+		line-height: 1;
 
         .message {
           position: relative;
@@ -355,5 +355,245 @@ const StyledHome = styled.main`
     }
   }
 `;
+// const StyledHome = styled.main`
+// 	display: flex;
+// 	height: 100vh;
+// 	max-width: 1600px;
+// 	margin: auto;
+// 	background-color: #000;
 
+// 	.left {
+// 		flex: 0 0 35%;
+// 		position: relative;
+// 		max-width: 600px;
+// 		background-color: #111;
+		
+// 		&::after {
+// 			content: "";
+// 			display: inline-block;
+// 			position: fixed;
+// 			top: 0;
+// 			left: calc(50% - 1440px);
+// 			z-index: -1;
+// 			width: 50%;
+// 			max-width: 1000px;
+// 			height: 100%;
+// 			background-color: ${(props) => props.theme.mainColor};
+// 		}
+		
+// 		.color-block {
+// 			position: absolute;
+// 			top: -60%;
+// 			left: -40vw;
+// 			z-index: 0;
+// 			width: 50vw;
+// 			height: 200%;
+// 			transform: rotate(-12deg);
+// 			background-color: ${(props) => props.theme.mainColor};
+// 		}
+		
+// 		.img-box {
+// 			width: 49vh;
+// 			height: 65vh;
+// 			margin: 5vh 0 0 30px;
+// 			background-image: url(${(props) => props.theme.mainSrc});
+// 			background-size: contain;
+// 			background-repeat: no-repeat;
+// 			background-position: top;
+// 			border-radius: 15px;
+// 			box-shadow: 0 0 7px rgba(0, 0, 0, 0.9);
+// 			position: relative;
+// 			z-index: 1;
+// 		}
+// 	}
+	
+// 	.right {
+// 		display: flex;
+// 		flex-direction: column;
+// 		justify-content: center;
+// 		align-items: flex-start;
+// 		padding: 0 10% 0 7%;
+// 		color: #fff;
+		
+// 		.tit-wrap {
+// 			margin-bottom: 60px;
+			
+// 			h2 {
+// 				font-size: 22px;
+// 			}
+			
+// 			h1 {
+// 				margin-bottom: 20px;
+// 				font-size: 45px;
+// 				font-weight: bold;
+// 				white-space: nowrap;
+// 				overflow: hidden;
+// 				position: relative;
+// 				line-height: 1;
+
+// 				.message {
+// 					display: block;
+// 					overflow: hidden;
+// 					position: absolute;
+// 					top: 0;
+// 					left: 80px;
+					
+// 					strong {
+// 						display: block;
+// 						color: ${(props) => props.theme.mainColor};
+// 						animation: ${messageslide} 8s ease-in-out infinite;
+// 					}
+
+// 					/* Add specific animation delays for each strong element */
+// 					strong:nth-of-type(1) {
+// 						animation-delay: 0s; /* First message */
+// 					}
+// 					strong:nth-of-type(2) {
+// 						animation-delay: 4s; /* Second message */
+// 					}
+// 				}
+// 			}
+			
+// 			p {
+// 				font-size: 16px;
+// 				line-height: 1.6;
+// 				padding: 0 15% 0 0;
+// 				max-width: 670px;
+// 				word-break: keep-all;
+// 			}
+// 		}
+		
+// 		section {
+// 			margin-bottom: 40px;
+			
+// 			h2 {
+// 				margin-bottom: 20px;
+// 				font-size: 26px;
+// 				font-weight: 600;
+// 			}
+			
+// 			ul {
+// 				display: flex;
+// 				flex-wrap: wrap;
+// 				padding: 0;
+// 				list-style: none;
+				
+// 				li {
+// 					width: 50%;
+// 					padding-bottom: 10px;
+// 					font-size: 16px;
+// 					font-weight: 500;
+// 					color: ${(props) => props.theme.mainColor};
+					
+// 					span {
+// 						font-weight: 400;
+// 						opacity: 0.8;
+// 						color: #fff;
+// 					}
+// 				}
+// 			}
+// 		}
+		
+// 		.more-btn {
+// 			padding: 0 40px;
+// 			border-radius: 26px;
+// 			background-color: ${(props) => props.theme.mainColor};
+// 			font-size: 15px;
+// 			font-weight: 500;
+// 			color: #fff;
+// 			line-height: 46px;
+// 			letter-spacing: 0.5px;
+// 			text-decoration: none;
+// 			display: inline-block;
+// 			text-align: center;
+// 		}
+// 	}
+	
+// 	@media ${(props) => props.theme.laptop} {
+// 		.left {
+// 			.color-block {
+// 				top: -60%;
+// 				left: -25vw;
+// 				width: 40vw;
+// 				height: 200%;
+// 				transform: rotate(-9deg);
+// 			}
+// 		}
+		
+// 		.right {
+// 			padding-right: 5%;
+			
+// 			.tit-wrap {
+// 				margin-bottom: 40px;
+				
+// 				h1 {
+// 					margin-bottom: 10px;
+// 					letter-spacing: -0.5px;
+// 				}
+// 			}
+			
+// 			section {
+// 				h2 {
+// 					margin-bottom: 10px;
+// 				}
+				
+// 				ul {
+// 					li {
+// 						width: 100%;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+	
+// 	@media ${(props) => props.theme.mobile} {
+// 		flex-wrap: wrap;
+		
+// 		.left {
+// 			flex: none;
+// 			width: 100%;
+// 			overflow: hidden;
+			
+// 			.color-block {
+// 				left: -40vw;
+// 				width: 80vw;
+// 				min-width: 250px;
+// 				transform: rotate(-12deg);
+// 			}
+			
+// 			.img-box {
+// 				width: 90vw;
+// 				height: 55vh;
+// 				margin: 3vh 5vw;
+// 				background-position: center;
+// 			}
+// 		}
+		
+// 		.right {
+// 			width: 100%;
+// 			flex: none;
+// 			margin: 5vh 0;
+// 			padding-bottom: 5vh;
+			
+// 			.tit-wrap {
+// 				h1 {
+// 					font-size: 35px;
+					
+// 					.message {
+// 						left: 60px;
+// 						animation: ${messageslide} 8s ease-in-out infinite;
+// 					}
+// 				}
+				
+// 				h2 {
+// 					font-size: 20px;
+// 				}
+				
+// 				p {
+// 					padding-right: 5%;
+// 				}
+// 			}
+// 		}
+// 	}
+// `;
 export default AboutTxtWrap;
