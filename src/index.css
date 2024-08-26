@@ -1,3 +1,4 @@
+
 /* 기본 페이지 스타일 */
 body {
   margin: 0;
@@ -7,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffc41f;
-  color: #333; /* 기본 텍스트 색상 */
+  color: #fff;
 }
 
 code {
@@ -17,7 +18,7 @@ code {
 
 /* 기본 페이지 스타일 */
 main {
-  background-color: #333;
+  background-color: #000;
   color: #fff;
 }
 

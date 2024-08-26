@@ -13,7 +13,7 @@ export class AboutPage extends Component {
 		return (
 			<PageWrap page="about">
 				<StyledSkills>
-					<PageHeader titleBg="Skills">
+					<PageHeader titleBg="Experience">
 						About <span className="point">Me</span>
 					</PageHeader>
 					<section>
@@ -21,23 +21,21 @@ export class AboutPage extends Component {
 						<EeducationWrap />
 					</section>
 
-					{/* <section>
-						<Heading level="2">MY SKILLS</Heading>
-						<SkillsWrap />
-					</section> */}
+					<section>
+						<Heading level="2">Work Experience</Heading>
+						<WorkExperienceWrap />
+					</section>
 
 					<section>
 						<Heading level="2">Social Experience</Heading>
 						<SocialExperienceWrap />
 					</section>
+
 					<section>
 						<Heading level="2">Certificate</Heading>
 						<CertificateWrap />
 					</section>
-					<section>
-						<Heading level="2">Work Experience</Heading>
-						<WorkExperienceWrap />
-					</section>
+
 				</StyledSkills>
 			</PageWrap>
 		);

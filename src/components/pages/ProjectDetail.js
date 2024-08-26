@@ -13,7 +13,7 @@ function ProjectDetail() {
     <div>
       <Header />
       <main>
-        <PageHeader titleBg="Works">
+        <PageHeader titleBg="Skills">
           It's <span className="point">{name}</span>
         </PageHeader>
         <section>

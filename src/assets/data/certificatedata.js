@@ -8,12 +8,12 @@ const certificatedata = {
 	  {
 		label: "1종보통운전면허",
 		date: "2014.09",
-		publisher: "경찰청(운전면허시험관리단)"
+		publisher: "운전면허시험관리단"
 	  },
 	  {
 		label: "2종소형운전면허",
 		date: "2022.09",
-		publisher: "경찰청(운전면허시험관리단)"
+		publisher: "운전면허시험관리단"
 	  },
 	  {
 		label: "일식조리기능사",
@@ -33,7 +33,7 @@ const certificatedata = {
 	  {
 		label: "커피바리스타",
 		date: "2014.09",
-		publisher: "KCAC 한국 커피아카데미 협의회"
+		publisher: "KCAC 커피아카데미 협의회"
 	  }
 	],
   };

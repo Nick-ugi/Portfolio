@@ -70,7 +70,7 @@ function AboutTxtWrap() {
     </StyledHome>
   );
 }
-// 애니메이션 정의
+// 글씨
 const messageSlideIn = keyframes`
   0% {
     opacity: 0;
@@ -93,14 +93,12 @@ const messageSlideIn = keyframes`
     transform: translateY(-30%);
   }
 `;
-/* StyledHome 컴포넌트의 스타일 */
+// 스타일
 const StyledHome = styled.main`
   display: flex;
   height: 100vh;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: auto;
-  background-color: #333;
-
   .left {
     flex: 0 0 35%;
     position: relative;

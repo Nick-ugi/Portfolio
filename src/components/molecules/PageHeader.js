@@ -32,6 +32,7 @@ const StyledPageHeader = styled.div`
 		margin: 10px auto;
 	}
 	.title-bg {
+		color: #fff;
 		font-size: 110px;
 		left: 0;
 		letter-spacing: 60px;
@@ -41,7 +42,7 @@ const StyledPageHeader = styled.div`
 		text-transform: uppercase;
 		font-weight: 800;
 		transform: translateY(-53%);
-		opacity: 0.07;
+		opacity: 0.3;
 		&.on {
 			transition: all 1.1s;
 			letter-spacing: 10px;

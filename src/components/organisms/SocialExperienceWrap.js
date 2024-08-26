@@ -4,12 +4,10 @@ import socialExperiencedata from "../../assets/data/socialExperiencedata";
 import Heading from "../atoms/Heading";
 
 const SocialExperienceWrap = () => {
-  // 데이터가 없을 경우 로딩 중 메시지 표시
   if (!socialExperiencedata.socialExperienceList) {
     return <div>데이터를 로드하는 중입니다...</div>;
   }
 
-  // 데이터 렌더링
   const socialExperiencelist = socialExperiencedata.socialExperienceList.map((activity, index) => (
     <div className="experience-list" key={index}>
       <Heading level="3" className="experience-label">
@@ -38,9 +36,18 @@ const StyledSocialExperienceWrap = styled.div`
     border: 1px solid #252525;
     border-radius: 5px;
     cursor: default;
-    background-color: #444;
+    position: relative;
+    overflow: hidden; /* 애니메이션이 영역을 넘지 않게 합니다 */
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: ${(props) => props.theme.mainColor};
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transform: scale(1.02) rotate(2deg);
+    }
 
     .experience-label {
+      margin-top: 0;
       margin-bottom: 10px;
       font-size: 18px;
       color: ${(props) => props.theme.mainColor};

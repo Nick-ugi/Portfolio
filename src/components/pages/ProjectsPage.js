@@ -6,9 +6,31 @@ import Heading from "../atoms/Heading";
 import PortfolioMain from "../organisms/PortfolioMain";
 import SkillsWrap from "../organisms/SkillsWrap";
 
-// 스타일이 적용된 main
+export class ProjectsPage extends Component {
+	render() {
+		return (
+			<PageWrap page="projects">
+				<StyledMain>
+					<PageHeader titleBg="Works">
+						My <span className="point">Projects</span>
+					</PageHeader>
+
+					<section>
+						<PortfolioMain />
+					</section>
+
+					<section>
+						<Heading level="2">MY SKILLS</Heading>
+						<SkillsWrap />
+					</section>
+					
+				</StyledMain>
+			</PageWrap>
+		);
+	}
+}
+
 const StyledMain = styled.main`
-  background-color: #333;
   color: #fff;
 
   section {
@@ -43,25 +65,5 @@ const StyledMain = styled.main`
   }
 `;
 
-export class ProjectsPage extends Component {
-	render() {
-		return (
-			<PageWrap page="projects">
-				<StyledMain>
-					<PageHeader titleBg="Works">
-						My <span className="point">Projects</span>
-					</PageHeader>
-					<section>
-						<PortfolioMain />
-					</section>
-					<section>
-						<Heading level="2">MY SKILLS</Heading>
-						<SkillsWrap />
-					</section>
-				</StyledMain>
-			</PageWrap>
-		);
-	}
-}
 
 export default ProjectsPage;
