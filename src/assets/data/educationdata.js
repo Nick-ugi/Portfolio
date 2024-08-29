@@ -50,7 +50,7 @@ const educationdata = {
 			  "AJAX를 이용한 다양한 데이터 입출력"
 			]},
 			{ "tech": "Oracle 11g, MariaDB, MySQL", "description": [
-			  "DB 설치 및 기본 SQL 작성",
+			  "쿼리 튜닝을 통한 성능 개선",
 			  "DB 모델링 기법 및 정규화",
 			  "트랜젝션의 개념과 처리 방법과 PL/SQL 작성"
 			]},
